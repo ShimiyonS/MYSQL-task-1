@@ -1,0 +1,102 @@
+-- create Movie table
+CREATE TABLE Movie 
+(Movie_id INTEGER PRIMARY KEY,
+Movie_name text NOT NULL,
+Movie_year TEXT NOT NULL,
+ Movie_genre TEXT NOT NULL ,
+  Movie_Lang TEXT NOT NULL);
+
+
+INSERT INTO Movie  VALUES (1, 'Iron man 3','2013','Superhero fiction','English,Tamil');
+INSERT INTO Movie  VALUES (2, 'Black Widow',  '2021','Superhero fiction', 'English,Tamil');
+INSERT INTO Movie VALUES (3, 'Thor: Love and Thunder', '3h 2m','Superhero fiction', 'English,Tamil');
+INSERT INTO Movie VALUES (4, 'Captain America-Civil War', '2h 27m', 'Superhero fiction', 'English,Tamil');
+INSERT INTO Movie VALUES (5, 'Captain Marvel', '2019', 'Superhero fiction', 'English,Tamil');
+INSERT INTO Movie VALUES (6, 'Guardians of the Galaxy Vol. 2', '2017', 'Superhero fiction', 'English,Tamil');
+INSERT INTO Movie VALUES (7, 'Spider-Man: No Way Home', '2021',  'Superhero fiction', 'English,Tamil');
+INSERT INTO Movie VALUES (8, 'Black Panther', '2022', 'Superhero fiction', 'English,Tamil');
+
+
+
+-- create ARTIST table
+CREATE TABLE ARTIST(
+art_id INTEGER PRIMARY KEY,
+art_name text NOT NULL,
+art_age TEXT NOT NULL,
+ art_gender TEXT NOT NULL);
+ 
+ 
+ -- insert Values in ARTIST
+ INSERT INTO ARTIST VALUES (1, 'Robert Downey Jr', '50', 'Male');
+ INSERT INTO ARTIST VALUES (2, 'Scarlett Johanson', '38', 'Female');
+ INSERT INTO ARTIST VALUES (3, 'Chris Hemsworth', '46', 'Male');
+ INSERT INTO ARTIST VALUES (4, 'Chris Evans', '42', 'Male');
+ INSERT INTO ARTIST VALUES (5, 'Brie Larson', '34', 'Female');
+ INSERT INTO ARTIST VALUES (6, 'Chris Prat', '36', 'Male');
+ INSERT INTO ARTIST VALUES (7, 'Tom Holland 2', '23', 'Male');
+ INSERT INTO ARTIST VALUES (8, 'Chadwick Boseman', '36', 'Male');
+ 
+
+-- Update Values in ARTIST
+
+ update ARTIST set art_name = "Tom Holland" where art_id =7;
+
+ 
+-- -- delete from Movie where id = 1;
+
+-- alter Movie table
+alter table Movie add column lead_char text default "IronMan";
+
+-- update Values in Movie
+update Movie set lead_char = "Hulk" where Movie_id =2;
+ update Movie set lead_char = "Thor" where Movie_id =3;
+ update Movie set lead_char = "Captain America" where Movie_id =4;
+ update Movie set lead_char = "Captain Marvel" where Movie_id =5;
+ update Movie set lead_char = "Star-lord" where Movie_id =6;
+ update Movie set lead_char = "Spider Man" where Movie_id =7;
+ update Movie set lead_char = "Black Panther" where Movie_id =8;
+
+
+
+-- create PRODUCTION table
+CREATE TABLE PRODUCTION(
+prod_id integer primary key
+);
+
+
+
+-- insert Values in PRODUCTION
+INSERT INTO PRODUCTION VALUES('1');
+INSERT INTO PRODUCTION VALUES('2');
+INSERT INTO PRODUCTION VALUES('3');
+INSERT INTO PRODUCTION VALUES('4');
+INSERT INTO PRODUCTION VALUES('5');
+INSERT INTO PRODUCTION VALUES('6');
+INSERT INTO PRODUCTION VALUES('7');
+INSERT INTO PRODUCTION VALUES('8');
+
+-- alter PRODUCTION table
+alter table PRODUCTION add column prod_name text default "Marvel Studios";
+
+-- create RATING table
+CREATE TABLE Rating(
+Rating_id integer primary key,
+IMDb text NOT NULL,
+Metacritic text NOT NULL
+);
+
+-- insert Values in Rating
+INSERT INTO Rating Values(1,'8.2','8.3');
+INSERT INTO Rating Values(2,'6.8','6.9');
+INSERT INTO Rating Values(3,'5.8','5.9');
+INSERT INTO Rating Values(4,'8.1','8.7');
+INSERT INTO Rating Values(5,'6.2','6.3');
+INSERT INTO Rating Values(6,'6.1','5.9');
+INSERT INTO Rating Values(7,'5.8','5.9');
+INSERT INTO Rating Values(8,'6.8','6.9');
+
+-- Select table
+select * from Movie 
+left join ARTIST on Movie_id =art_id 
+left join PRODUCTION on Movie_id =prod_id 
+left join Rating on Movie_id =Rating_id;
